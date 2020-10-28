@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { places } from "../data";
+
+import image from "../images/search.svg";
 import "./searchBar.css";
 function SearchBar() {
   const [activeOption, setAcativeOptions] = useState(0);
@@ -122,6 +124,7 @@ function SearchBar() {
   return (
     <div className="search-bar">
       <div className="search">
+        <img src={image} alt=""></img>
         <input
           type="text"
           value={text}
