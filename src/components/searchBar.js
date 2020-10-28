@@ -5,7 +5,10 @@ function SearchBar() {
   const [activeOption, setAcativeOptions] = useState(0);
 
   const [text, setText] = useState("");
-  const [filteredOptions, setFilteredOptions] = useState([]);
+  const [filteredOptions, setFilteredOptions] = useState({
+    normal: [],
+    htmlVal: [],
+  });
 
   const onChangeOptions = (e) => {
     const userInput = e.target.value;
@@ -17,26 +20,27 @@ function SearchBar() {
     }
     setText(userInput);
     let x = highlight(suggestions, userInput);
-    setFilteredOptions([]);
+    setFilteredOptions({ normal: suggestions, htmlVal: x });
     setAcativeOptions(0);
   };
 
+  //TODO:
   const onClick = (e) => {
-    setFilteredOptions([]);
+    setFilteredOptions({ normal: [], htmlVal: [] });
 
     setText(e.target.innerText);
     setAcativeOptions(0);
   };
 
   const renderOptions = () => {
-    if (filteredOptions.length > 0) {
+    if (filteredOptions.normal.length > 0) {
       return (
         <ul className="suggestions">
-          {filteredOptions.map((val, index) => {
+          {filteredOptions.htmlVal.map((val, index) => {
             if (activeOption === index) {
               return (
                 <li
-                  onClick={onClick}
+                  onClick={() => onClick(filteredOptions.normal[index])}
                   key={index}
                   style={{ backgroundColor: "#ebeaf2" }}
                   dangerouslySetInnerHTML={{ __html: val }}
@@ -46,7 +50,7 @@ function SearchBar() {
 
             return (
               <li
-                onClick={onClick}
+                onClick={() => onClick(filteredOptions.normal[index])}
                 key={index}
                 dangerouslySetInnerHTML={{ __html: val }}
               ></li>
@@ -63,8 +67,8 @@ function SearchBar() {
     //Enter
     if (e.keyCode === 13) {
       setAcativeOptions(0);
-      setFilteredOptions([]);
-      setText(filteredOptions[activeOption]);
+      setFilteredOptions({ normal: [], htmlVal: [] });
+      setText(filteredOptions.normal[activeOption]);
     }
     //Up
     else if (e.keyCode === 38) {
@@ -75,14 +79,14 @@ function SearchBar() {
     }
     //Down
     else if (e.keyCode === 40) {
-      if (activeOption === filteredOptions.length - 1) {
+      if (activeOption === filteredOptions.normal.length - 1) {
         return;
       }
       setAcativeOptions(activeOption + 1);
     }
     //ESC
     else if (e.keyCode === 27) {
-      setFilteredOptions([]);
+      setFilteredOptions({ normal: [], htmlVal: [] });
       setText("");
       setAcativeOptions(0);
     } else if (e.keyCode === 16) {
@@ -123,7 +127,7 @@ function SearchBar() {
           onKeyDown={onKey}
         ></input>
       </div>
-      {filteredOptions.length === 0 ? (
+      {filteredOptions.normal.length === 0 ? (
         <div className="des">
           <p>
             Use <span className="key">Enter</span> to select element
