@@ -4,6 +4,7 @@ import {
   filteredSuggetion,
   getFruitsList,
   element_added,
+  addFruit,
 } from "../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import "./searchBar.css";
@@ -130,13 +131,17 @@ function SearchBar() {
     return temp;
   };
 
+  const [see, setSee] = useState(true);
+
+  useEffect(() => {
+    setSee(true);
+    setTimeout(() => {
+      setSee(false);
+    }, 1500);
+  }, [added]);
+
   return (
     <div className="search-bar">
-      {added === null ? null : added ? (
-        <h5>element added</h5>
-      ) : (
-        <h6>element not added</h6>
-      )}
       <div className="search">
         <img src={image} alt=""></img>
         <input
@@ -145,6 +150,15 @@ function SearchBar() {
           onChange={onChangeOptions}
           onKeyDown={onKey}
         ></input>
+      </div>
+      <div className="message">
+        {added === null ? null : added ? (
+          see ? (
+            <h4>Element added</h4>
+          ) : null
+        ) : see ? (
+          <h4>Element already present</h4>
+        ) : null}
       </div>
       {filteredOptions.normal.length === 0 ? (
         <div className="des">
