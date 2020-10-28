@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import image from "../images/search.svg";
-import { filteredSuggetion, getFruitsList } from "../store/actions";
+import { filteredSuggetion, getFruitsList, addFruit } from "../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import "./searchBar.css";
 
@@ -98,9 +98,7 @@ function SearchBar() {
       setText("");
       setAcativeOptions(0);
     } else if (e.keyCode === 16) {
-      if (fruits.indexOf(text) === -1) {
-        //add element to array
-      }
+      dispatch(addFruit(text));
     }
   };
 

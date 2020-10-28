@@ -7,9 +7,11 @@ export const getFruitsList = () => {
   };
 };
 
-export const addFruit = () => {
-  //todo
-  return;
+export const addFruit = (fruit) => {
+  return {
+    type: "ADD_FRUIT",
+    payload: fruit,
+  };
 };
 
 export const filteredSuggetion = (normal, htmlVal) => {
