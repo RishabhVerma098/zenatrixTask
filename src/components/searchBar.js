@@ -4,7 +4,6 @@ import {
   filteredSuggetion,
   getFruitsList,
   element_added,
-  addFruit,
 } from "../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import "./searchBar.css";
@@ -163,7 +162,7 @@ function SearchBar() {
       {filteredOptions.normal.length === 0 ? (
         <div className="des">
           <p>
-            Use <span className="key">Enter</span> to select element
+            Use <span className="key">ENTER</span> to select element
           </p>
           <p>
             Use <span className="key">UP</span> and{" "}
