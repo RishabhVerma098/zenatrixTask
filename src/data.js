@@ -1,4 +1,4 @@
-export const places = [
+export const fruits = [
   "Apples",
   "pears",
   "Citrus",

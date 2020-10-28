@@ -1,16 +1,24 @@
-import React, { useState } from "react";
-import { places } from "../data";
-
+import React, { useEffect, useState } from "react";
 import image from "../images/search.svg";
+import { filteredSuggetion, getFruitsList } from "../store/actions";
+import { useDispatch, useSelector } from "react-redux";
 import "./searchBar.css";
-function SearchBar() {
-  const [activeOption, setAcativeOptions] = useState(0);
 
+function SearchBar() {
+  const dispatch = useDispatch();
+
+  //for list element coloring using keys
+  const [activeOption, setAcativeOptions] = useState(0);
+  //input
   const [text, setText] = useState("");
-  const [filteredOptions, setFilteredOptions] = useState({
-    normal: [],
-    htmlVal: [],
-  });
+
+  //get all the fruits
+  useEffect(() => {
+    dispatch(getFruitsList());
+  }, []);
+
+  const fruits = useSelector((state) => state.fruitsReducer);
+  const filteredOptions = useSelector((state) => state.filterReducer);
 
   const onChangeOptions = (e) => {
     const userInput = e.target.value;
@@ -18,18 +26,16 @@ function SearchBar() {
 
     if (userInput.length > 0) {
       const regex = new RegExp(`^${userInput}`, `i`);
-      suggestions = places.sort().filter((v) => regex.test(v));
+      suggestions = fruits.sort().filter((v) => regex.test(v));
     }
     setText(userInput);
-    let x = highlight(suggestions, userInput);
-    setFilteredOptions({ normal: suggestions, htmlVal: x });
+    let x = highlight(suggestions, userInput); //utily function
+    dispatch(filteredSuggetion(suggestions, x));
     setAcativeOptions(0);
   };
 
-  //TODO:
   const onClick = (e) => {
-    setFilteredOptions({ normal: [], htmlVal: [] });
-
+    dispatch(filteredSuggetion([], []));
     setText(e.target.innerText);
     setAcativeOptions(0);
   };
@@ -69,7 +75,7 @@ function SearchBar() {
     //Enter
     if (e.keyCode === 13) {
       setAcativeOptions(0);
-      setFilteredOptions({ normal: [], htmlVal: [] });
+      dispatch(filteredSuggetion([], []));
       setText(filteredOptions.normal[activeOption]);
     }
     //Up
@@ -88,11 +94,11 @@ function SearchBar() {
     }
     //ESC
     else if (e.keyCode === 27) {
-      setFilteredOptions({ normal: [], htmlVal: [] });
+      dispatch(filteredSuggetion([], []));
       setText("");
       setAcativeOptions(0);
     } else if (e.keyCode === 16) {
-      if (places.indexOf(text) === -1) {
+      if (fruits.indexOf(text) === -1) {
         //add element to array
       }
     }
@@ -117,7 +123,6 @@ function SearchBar() {
 
     let temp = results.split(",");
     temp.pop();
-    console.log(temp);
     return temp;
   };
 
@@ -151,9 +156,6 @@ function SearchBar() {
         </div>
       ) : null}
       {renderOptions()}
-      {/* <button style={{ height: "20px" }} onClick={() => highlight()}>
-        Press
-      </button> */}
     </div>
   );
 }
