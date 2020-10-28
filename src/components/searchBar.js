@@ -16,7 +16,8 @@ function SearchBar() {
       suggestions = places.sort().filter((v) => regex.test(v));
     }
     setText(userInput);
-    setFilteredOptions([...suggestions]);
+    let x = highlight(suggestions, userInput);
+    setFilteredOptions([]);
     setAcativeOptions(0);
   };
 
@@ -38,16 +39,17 @@ function SearchBar() {
                   onClick={onClick}
                   key={index}
                   style={{ backgroundColor: "#ebeaf2" }}
-                >
-                  {val}
-                </li>
+                  dangerouslySetInnerHTML={{ __html: val }}
+                ></li>
               );
             }
 
             return (
-              <li onClick={onClick} key={index}>
-                {val}
-              </li>
+              <li
+                onClick={onClick}
+                key={index}
+                dangerouslySetInnerHTML={{ __html: val }}
+              ></li>
             );
           })}
         </ul>
@@ -90,12 +92,32 @@ function SearchBar() {
     }
   };
 
+  const highlight = (s, input) => {
+    let data = s;
+    let str_data = "";
+
+    data.forEach((i) => {
+      str_data = str_data + i + ",";
+    });
+
+    const term = input;
+    let results = str_data;
+
+    results = results.replace(
+      new RegExp(term, "gi"),
+      (match) => `<mark>${match}</mark>`
+    );
+
+    let temp = results.split(",");
+    temp.pop();
+    return temp;
+  };
+
   return (
     <div className="search-bar">
       <div className="search">
         <input
           type="text"
-          placeholder="Type here.."
           value={text}
           onChange={onChangeOptions}
           onKeyDown={onKey}
@@ -120,6 +142,9 @@ function SearchBar() {
         </div>
       ) : null}
       {renderOptions()}
+      {/* <button style={{ height: "20px" }} onClick={() => highlight()}>
+        Press
+      </button> */}
     </div>
   );
 }
