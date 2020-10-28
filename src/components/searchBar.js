@@ -109,11 +109,13 @@ function SearchBar() {
 
     results = results.replace(
       new RegExp(term, "gi"),
-      (match) => `<mark>${match}</mark>`
+      (match) =>
+        `<span style="border-bottom:4px solid #dd7c7c; padding-bottom:2px;">${match}</span>`
     );
 
     let temp = results.split(",");
     temp.pop();
+    console.log(temp);
     return temp;
   };
 
