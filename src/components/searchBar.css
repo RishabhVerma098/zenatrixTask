@@ -12,6 +12,12 @@
   border-radius: 8px;
 }
 
+@media (max-width: 900px) {
+  .search-bar {
+    width: 80%;
+  }
+}
+
 .search-bar .message {
   padding-left: 2rem;
 }
@@ -62,6 +68,13 @@
   display: flex;
   flex-direction: column;
   padding-left: 2rem;
+}
+
+@media (max-width: 500px) {
+  .search-bar .des {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 .search-bar .des p {
