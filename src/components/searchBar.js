@@ -5,6 +5,7 @@ import {
   getFruitsList,
   element_added,
 } from "../store/actions";
+import KeyData from "./keydata";
 import { useDispatch, useSelector } from "react-redux";
 import "./searchBar.css";
 
@@ -102,7 +103,9 @@ function SearchBar() {
       dispatch(filteredSuggetion([], []));
       setText("");
       setAcativeOptions(0);
-    } else if (e.keyCode === 16) {
+    }
+    //LEFT SHIFT
+    else if (e.keyCode === 16) {
       setText("");
       dispatch(element_added(text, fruits));
     }
@@ -159,24 +162,7 @@ function SearchBar() {
           <h4>Element already present</h4>
         ) : null}
       </div>
-      {filteredOptions.normal.length === 0 ? (
-        <div className="des">
-          <p>
-            Use <span className="key">ENTER</span> to select element
-          </p>
-          <p>
-            Use <span className="key">UP</span> and{" "}
-            <span className="key">DOWN</span> key to navigate between
-            suggestions
-          </p>
-          <p>
-            Use <span className="key">SHIFT</span> to add items
-          </p>
-          <p>
-            Use <span className="key">ESC</span> to Clear
-          </p>
-        </div>
-      ) : null}
+      {filteredOptions.normal.length === 0 ? <KeyData /> : null}
       {renderOptions()}
     </div>
   );
