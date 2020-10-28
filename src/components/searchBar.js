@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import image from "../images/search.svg";
-import { filteredSuggetion, getFruitsList, addFruit } from "../store/actions";
+import {
+  filteredSuggetion,
+  getFruitsList,
+  element_added,
+} from "../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import "./searchBar.css";
 
@@ -19,6 +23,7 @@ function SearchBar() {
 
   const fruits = useSelector((state) => state.fruitsReducer);
   const filteredOptions = useSelector((state) => state.filterReducer);
+  const added = useSelector((state) => state.addedReducer);
 
   const onChangeOptions = (e) => {
     const userInput = e.target.value;
@@ -98,7 +103,8 @@ function SearchBar() {
       setText("");
       setAcativeOptions(0);
     } else if (e.keyCode === 16) {
-      dispatch(addFruit(text));
+      setText("");
+      dispatch(element_added(text, fruits));
     }
   };
 
@@ -126,6 +132,11 @@ function SearchBar() {
 
   return (
     <div className="search-bar">
+      {added === null ? null : added ? (
+        <h5>element added</h5>
+      ) : (
+        <h6>element not added</h6>
+      )}
       <div className="search">
         <img src={image} alt=""></img>
         <input
