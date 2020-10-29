@@ -11,13 +11,16 @@ Create a search bar component using react.
 ### Feature
 - Mobile **responsive**
 - **Highlighting** the matching search string in the suggestions
-
+![alt text](zenatrix.PNG)
 
 ### Live link (Deployed in github pages)
 
 [https://rishabhverma098.github.io/zenatrixTask/](https://rishabhverma098.github.io/zenatrixTask/)
 
 ### Screenshots
+![alt text](zenatrix1.PNG)
+![alt text](zenatrix2.PNG)
+
 
 
 
