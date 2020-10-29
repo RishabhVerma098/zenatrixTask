@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/zenatrixTask/static/css/main.3c2ee6d8.chunk.css",
-    "main.js": "/zenatrixTask/static/js/main.49a32d62.chunk.js",
-    "main.js.map": "/zenatrixTask/static/js/main.49a32d62.chunk.js.map",
+    "main.css": "/zenatrixTask/static/css/main.3a453d7f.chunk.css",
+    "main.js": "/zenatrixTask/static/js/main.f3b1e31c.chunk.js",
+    "main.js.map": "/zenatrixTask/static/js/main.f3b1e31c.chunk.js.map",
     "runtime-main.js": "/zenatrixTask/static/js/runtime-main.ac2113ca.js",
     "runtime-main.js.map": "/zenatrixTask/static/js/runtime-main.ac2113ca.js.map",
-    "static/js/2.3e4e5c77.chunk.js": "/zenatrixTask/static/js/2.3e4e5c77.chunk.js",
-    "static/js/2.3e4e5c77.chunk.js.map": "/zenatrixTask/static/js/2.3e4e5c77.chunk.js.map",
+    "static/js/2.110131b3.chunk.js": "/zenatrixTask/static/js/2.110131b3.chunk.js",
+    "static/js/2.110131b3.chunk.js.map": "/zenatrixTask/static/js/2.110131b3.chunk.js.map",
     "index.html": "/zenatrixTask/index.html",
-    "static/css/main.3c2ee6d8.chunk.css.map": "/zenatrixTask/static/css/main.3c2ee6d8.chunk.css.map",
-    "static/js/2.3e4e5c77.chunk.js.LICENSE.txt": "/zenatrixTask/static/js/2.3e4e5c77.chunk.js.LICENSE.txt",
+    "static/css/main.3a453d7f.chunk.css.map": "/zenatrixTask/static/css/main.3a453d7f.chunk.css.map",
+    "static/js/2.110131b3.chunk.js.LICENSE.txt": "/zenatrixTask/static/js/2.110131b3.chunk.js.LICENSE.txt",
     "static/media/search.1260bf95.svg": "/zenatrixTask/static/media/search.1260bf95.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.ac2113ca.js",
-    "static/js/2.3e4e5c77.chunk.js",
-    "static/css/main.3c2ee6d8.chunk.css",
-    "static/js/main.49a32d62.chunk.js"
+    "static/js/2.110131b3.chunk.js",
+    "static/css/main.3a453d7f.chunk.css",
+    "static/js/main.f3b1e31c.chunk.js"
   ]
 }
