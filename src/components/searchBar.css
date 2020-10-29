@@ -19,7 +19,8 @@
 }
 
 .search-bar .message {
-  padding-left: 2rem;
+  padding-left: 20px;
+  margin-bottom: 1rem;
 }
 
 .search-bar .message h4 {
@@ -41,6 +42,7 @@
   padding-bottom: 10px;
   display: flex;
 }
+
 .search-bar .search img {
   margin-left: 1rem;
   width: 20px;
@@ -54,6 +56,29 @@
   padding-left: 20px;
   color: rgb(184, 184, 184);
   font-size: 2rem;
+}
+
+.search-bar .search .clear-add {
+  display: flex;
+  margin-right: 1rem;
+}
+
+.search-bar .search .clear-add button {
+  margin-left: 1rem;
+  padding: 5px 10px 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(213, 253, 215);
+  color: rgb(163, 163, 163);
+}
+.search-bar .search .clear-add :hover {
+  cursor: pointer;
+}
+
+.search-bar .search .clear-add .clear {
+  background-color: rgb(236, 184, 184);
+  color: aliceblue;
+  font-weight: 700;
 }
 
 .search-bar .search input:focus {
@@ -89,6 +114,16 @@
   color: black;
   border-radius: 2px;
 }
+
+.search-bar .found {
+  margin-left: 20px;
+  padding: 4px 8px 4px 8px;
+  background-color: rgb(186, 177, 226);
+  width: max-content;
+  font-size: 0.8rem;
+  border-radius: 3px;
+  color: aliceblue;
+}
 .search-bar ul {
   width: 100%;
   max-height: 400px;
@@ -96,11 +131,23 @@
   margin-bottom: 1rem;
 }
 .search-bar ul li {
-  padding: 0.8rem;
-  margin: 0px 10px 0px 10px;
+  margin: 10px 10px 0px 10px;
   border-radius: 5px;
+  background-color: thistle;
 }
-.search-bar ul li:hover {
+
+.search-bar ul li button {
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  height: 100%;
+  text-align: start;
+  background-color: white;
+  font-size: 1.2rem;
+}
+
+.search-bar ul li button :hover {
   cursor: pointer;
   background-color: var(--selectColor);
 }
