@@ -1,4 +1,4 @@
-# zenatrix task search bar componenet
+# zenatix task search bar componenet
 
 ### Objective 
 Create a search bar component using react. , [LIVE LINK](https://rishabhverma098.github.io/zenatrixTask/)
